@@ -4,7 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Noita extends JavaPlugin {
-   private static Noita Instance;
+   public static Noita Instance;
     @Override
     public void onEnable() {
         Instance = this;

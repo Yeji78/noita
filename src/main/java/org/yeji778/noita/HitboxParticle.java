@@ -24,19 +24,20 @@ public class HitboxParticle {
         this.damage = damage;
     }
 
-    // 显示粒子并检查碰撞
+    // 显示粒子
     public void showParticle(Location location, Vector direction) {
-        // 显示粒子
         player.getWorld().spawnParticle(particle, location, 0, direction.getX(), direction.getY(), direction.getZ(), 0.1);
-        // 检查碰撞
-        Location clone = location.clone();
+    }
+
+    // 检查碰撞并处理伤害
+    public void checkCollision(Location location) {
         Bukkit.getScheduler().runTask(Noita.getInstance(), () -> {
-            Collection<Entity> nearbyEntities = clone.getWorld().getNearbyEntities(clone, damageRadius, damageRadius, damageRadius);
+            Collection<Entity> nearbyEntities = location.getWorld().getNearbyEntities(location, damageRadius, damageRadius, damageRadius);
             for (Entity entity : nearbyEntities) {
                 if (entity instanceof LivingEntity && entity != player) {
                     LivingEntity livingEntity = (LivingEntity) entity;
-                    clone.setY(clone.getY()+1);
-                    if (livingEntity.getLocation().distanceSquared(clone) <= damageRadius * damageRadius) {
+                    Location entityLocation = livingEntity.getLocation().clone().add(0, 0.5, 0);
+                    if (entityLocation.distanceSquared(location) <= damageRadius * damageRadius) {
                         livingEntity.damage(damage, player);
                     }
                 }

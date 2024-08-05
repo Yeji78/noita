@@ -26,17 +26,19 @@ public class PlayerListener implements Listener {
         }
     }
 
-
     private Staffs getStaffsForPlayer(Player player) {
         Staffs staffs = new Staffs(player, Particle.FLAME, 10.0f, 10);
         Core core1 = new Core(2.0f, 3, 45, staffs);
-        Core core3 = new Core(5.0f, 2, 10, staffs);
-        Core core4 = new Core(5.0f, 7, 3, staffs);
+        Core core2 = new Core(5.0f, 2, 10, staffs);
+        Core core3 = new Core(5.0f, 3, 60, staffs);
+        Core core4 = new Core(5.0f, 2, 3, staffs);
         staffs.setCores(core1);
+        staffs.setCores(core2);
         staffs.setCores(core3);
         staffs.setCores(core4);
         return staffs;
     }
+
 }
 
 
