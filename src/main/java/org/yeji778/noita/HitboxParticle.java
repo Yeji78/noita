@@ -26,7 +26,7 @@ public class HitboxParticle {
 
     // 显示粒子并检查碰撞
     public void showParticle(Location location, Vector direction) {
-        // 显示粒
+        // 显示粒子
         player.getWorld().spawnParticle(particle, location, 0, direction.getX(), direction.getY(), direction.getZ(), 0.1);
         // 检查碰撞
         Location clone = location.clone();
