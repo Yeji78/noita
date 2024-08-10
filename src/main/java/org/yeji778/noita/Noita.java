@@ -10,7 +10,6 @@ public final class Noita extends JavaPlugin {
         Instance = this;
         Bukkit.getPluginManager().registerEvents(new PlayerListener(),getInstance());
         // Plugin startup logic
-
     }
 
     @Override

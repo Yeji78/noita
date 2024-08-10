@@ -22,7 +22,6 @@ public class Core  {
     private static final double DEFAULT_DAMAGE_RADIUS = 1.5; // 默认的粒子碰撞箱半径
     private static final double DEFAULT_DAMAGE = 5.0; // 默认的伤害值
 
-    // 构造函数，初始化粒子效果的相关参数
     public Core(float distance, int frequency, double angle, Staffs staffs) {
         this.distance = distance;
         this.frequency = frequency;
@@ -74,14 +73,13 @@ public class Core  {
         double interval = distance / particleCount;
         List<Location> finalLocations = new ArrayList<>();
 
-        // 异步任务发射粒子
+        // 发射粒子
         Bukkit.getScheduler().runTaskAsynchronously(Noita.getInstance(), () -> {
             for (Location initialLocation : initialLocations) {
                 for (int i = 0; i < particleCount; i++) {
                     double distanceTravelled = interval * i;
                     for (Vector direction : directions) {
                         Location particleLocation = initialLocation.clone().add(direction.clone().normalize().multiply(distanceTravelled));
-
                         // 创建具有碰撞检测的粒子，使用默认的碰撞箱半径和伤害值
                         HitboxParticle hitboxParticle = new HitboxParticle(player, particle, DEFAULT_DAMAGE_RADIUS, DEFAULT_DAMAGE);
                         hitboxParticle.showParticle(particleLocation, direction);

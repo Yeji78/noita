@@ -18,6 +18,7 @@ public class PlayerListener implements Listener {
         ItemStack item = player.getInventory().getItemInMainHand();
         player1 = player;
 
+
         if (item != null && item.getType() == Material.STICK) {
             startTime = System.currentTimeMillis();
             Staffs staffs = getStaffsForPlayer(player); // 需要实现此方法获取玩家对应的 Staffs 实例

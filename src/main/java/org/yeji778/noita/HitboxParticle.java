@@ -25,17 +25,17 @@ public class HitboxParticle {
     }
 
     // 显示粒子并检查碰撞
+
     public void showParticle(Location location, Vector direction) {
         // 显示粒子
         player.getWorld().spawnParticle(particle, location, 0, direction.getX(), direction.getY(), direction.getZ(), 0.1);
         // 检查碰撞
-
         Bukkit.getScheduler().runTask(Noita.getInstance(), () -> {
             Collection<Entity> nearbyEntities = location.getWorld().getNearbyEntities(location, damageRadius, damageRadius, damageRadius);
             for (Entity entity : nearbyEntities) {
                 if (entity instanceof LivingEntity && entity != player) {
                     LivingEntity livingEntity = (LivingEntity) entity;
-                    location.setY(location.getY()-0.5);
+                    location.setY(location.getY()-0.7);
                     if (livingEntity.getLocation().distanceSquared(location) <= damageRadius * damageRadius) {
                         livingEntity.damage(damage, player);
                     }

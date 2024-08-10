@@ -59,7 +59,6 @@ public class Staffs {
             player.sendMessage(String.format("%.6f 秒", elapsedTimeSeconds));
         }
     }
-
     public void updateLastParticleLocations(List<Location> locations, Vector[] endDirections) {
         this.lastParticleLocations = (locations != null) ? new ArrayList<>(locations) : new ArrayList<>();
         if (endDirections != null && endDirections.length > 0) {
